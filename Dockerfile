@@ -10,10 +10,11 @@ COPY .babelrc /aws-ses-local
 
 RUN npm install --loglevel=silent
 
-# Copy app source
-COPY src /aws-ses-local/src
+RUN mkdir -p /src
 
-RUN npm run prepublish
+VOLUME /aws-ses-local/output
+VOLUME /aws-ses-local/build/templates
+VOLUME /aws-ses-local/src
 
 ENV PORT=9001
 EXPOSE 9001

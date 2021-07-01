@@ -10,8 +10,14 @@ import fs from 'fs'
 import mkdir from './library/mkdir'
 import options from './library/options'
 import rmdir from './library/rmdir'
+
 import sendEmail from './send-email'
 import sendRawEmail from './send-raw-email'
+import listTemplates from './list-templates'
+import createTemplate from './create-template'
+import getTemplate from './get-template'
+import deleteTemplate from './delete-template'
+import sendTemplatedEmail from './send-templated-email'
 
 const app = express()
 const log = console.log //eslint-disable-line
@@ -34,6 +40,11 @@ if (options.clean !== undefined) {
 log(`  ${chalk.green('Creating output directory:')} ${options.outputDir}`)
 mkdir(path.join(options.outputDir))
 
+const emailTemplatesDir = path.join('./email-templates');
+
+log(`  ${chalk.green('Creating emaail templates directory:')} './email-templates'`)
+mkdir(emailTemplatesDir)
+
 app.post('/', (req, res) => {
   const dateTime = new Date().toISOString()
   const dateDir = `${options.outputDir}/${dateTime.slice(0, 10)}`
@@ -51,8 +62,25 @@ app.post('/', (req, res) => {
         log(`  ${chalk.green('GetAccountSendingEnabled request received')}`)
         res.status(200).send(sendingEnabledTemplate)
         break
+      case 'ListTemplates':
+        listTemplates(req, res, emailTemplatesDir, log)
+        break
+      case 'CreateTemplate':
+        createTemplate(req, res, emailTemplatesDir, log)
+        break
+      case 'GetTemplate':
+        getTemplate(req, res, emailTemplatesDir, log)
+        break
+      case 'DeleteTemplate':
+        deleteTemplate(req, res, emailTemplatesDir, log)
+        break
+      case 'SendTemplatedEmail':
+        sendTemplatedEmail(req, res, dateDir, fullDir, emailTemplatesDir, log)
+        break
       default:
+        log(req)
         throw new Error(`Unsupported action ${req.body.Action}`)
+
     }
   } catch (err) {
     log(`   ${chalk.red('Error Occured:')} ${err}`)

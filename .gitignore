@@ -42,4 +42,7 @@ build
 # Output Dir
 output
 
+# Email Templates Dir
+email-templates
+
 .DS_Store

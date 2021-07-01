@@ -1,6 +1,6 @@
 # aws-ses-local
 
-[![Build Status](https://travis-ci.org/Si1kIfY/aws-ses-local.svg?branch=master)](https://travis-ci.org/Si1kIfY/aws-ses-local) [![Coverage Status](https://coveralls.io/repos/github/Si1kIfY/aws-ses-local/badge.svg?branch=master)](https://coveralls.io/github/Si1kIfY/aws-ses-local?branch=master) [![Known Vulnerabilities](https://snyk.io/test/github/si1kify/aws-ses-local/badge.svg)](https://snyk.io/test/github/si1kify/aws-ses-local) [![scrutinizer](https://img.shields.io/scrutinizer/g/Si1kIfY/aws-ses-local.svg)](https://scrutinizer-ci.com/g/Si1kIfY/aws-ses-local/) [![npm package](https://img.shields.io/npm/v/aws-ses-local.svg)](https://www.npmjs.com/package/aws-ses-local) [![repo license](https://img.shields.io/github/license/Si1kIfY/aws-ses-local.svg)](https://github.com/Si1kIfY/aws-ses-local/blob/master/LICENSE) 
+[![Build Status](https://travis-ci.org/Si1kIfY/aws-ses-local.svg?branch=master)](https://travis-ci.org/Si1kIfY/aws-ses-local) [![Coverage Status](https://coveralls.io/repos/github/Si1kIfY/aws-ses-local/badge.svg?branch=master)](https://coveralls.io/github/Si1kIfY/aws-ses-local?branch=master) [![Known Vulnerabilities](https://snyk.io/test/github/si1kify/aws-ses-local/badge.svg)](https://snyk.io/test/github/si1kify/aws-ses-local) [![scrutinizer](https://img.shields.io/scrutinizer/g/Si1kIfY/aws-ses-local.svg)](https://scrutinizer-ci.com/g/Si1kIfY/aws-ses-local/) [![npm package](https://img.shields.io/npm/v/aws-ses-local.svg)](https://www.npmjs.com/package/aws-ses-local) [![repo license](https://img.shields.io/github/license/Si1kIfY/aws-ses-local.svg)](https://github.com/Si1kIfY/aws-ses-local/blob/master/LICENSE)
 
 Creates local [Amazon Simple Email Service](https://aws.amazon.com/ses/) Server for consuming requests sent by the API
 
@@ -10,7 +10,14 @@ Creates local [Amazon Simple Email Service](https://aws.amazon.com/ses/) Server 
 * Returns file url of html email in place of MessageId
 
 ## Supported Functions
-  * [sendEmail(params = {}, callback)](https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/SES.html#sendEmail-property)
+  * [sendEmail](https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/SES.html#sendEmail-property)
+  * [SendRawEmail](https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/SES.html#sendRawEmail-property)
+  * [GetAccountSendingEnabled](https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/SES.html#getAccountSendingEnabled-property)
+  * [ListTemplates](https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/SES.html#listTemplates-property)
+  * [CreateTemplate](https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/SES.html#createTemplate-property)
+  * [GetTemplate](https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/SES.html#getTemplate-property)
+  * [DeleteTemplate](https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/SES.html#deleteTemplate-property)
+  * [SendTemplatedEmail](https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/SES.html#sendTemplatedEmail-property)
 
 # Installation
 
@@ -27,7 +34,7 @@ aws-ses-local
 ## CLI Options
 
 | Option  | Short Option | Default | Description |
-| --- | --- | --- | --- | 
+| --- | --- | --- | --- |
 | `--outputDir` | `-o` | `./output` | Specify output directory |
 | `--port` | `-p` | `9001` | Specify port for server to run on |
 | `--clean` | `-c` | none | Clean output directory (delete all contents) |
